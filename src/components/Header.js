@@ -27,8 +27,7 @@ function Header() {
       <RightMenu>
         <a>Shop</a>
         <a>Account</a>
-        <a>Menu</a>
-        <HamburgerMenu />
+        <HamburgerMenu>Menu</HamburgerMenu>
       </RightMenu>
       <BurgerMenu>
         <li>
@@ -97,6 +96,11 @@ const HeaderWrapper = styled.div`
   right: 0;
   z-index: 1;
 
+  a:hover {
+    background-color: green;
+    border-raduis: 50px;
+  }
+
   @media (max-width: 1201px) {
     max-width: 41rem;
     margin: 0 auto;
@@ -140,7 +144,10 @@ const RightMenu = styled.div`
   }
 `;
 
-const HamburgerMenu = styled(MenuIcon)`
+const HamburgerMenu = styled.div`
+  font-weight: 600;
+  transform: scale(1.2);
+  text-transform: Uppercase;
   cursor: pointer;
 `;
 
@@ -160,6 +167,5 @@ const BurgerMenu = styled.div`
 
   li {
     padding: 15px 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
   }
 `;
