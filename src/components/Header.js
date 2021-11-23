@@ -175,6 +175,11 @@ const BurgerMenu = styled.div`
   li {
     padding: 15px 0;
   }
+
+  a:hover {
+    transform: scale(1.2);
+    transition: ease-in 0.3s;
+  }
 `;
 
 const CustomClosed = styled(CloseOutlinedIcon)`
