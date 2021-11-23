@@ -1,9 +1,12 @@
 /** @format */
-
+import React, { useState } from "react";
 import styled from "styled-components";
 import MenuIcon from "@mui/icons-material/Menu";
+import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 
 function Header() {
+  const [openMenu, setOpenMenu] = useState(false);
+
   return (
     <HeaderWrapper>
       <Logo>
@@ -13,23 +16,21 @@ function Header() {
       </Logo>
       <Menu>
         <a href="#">Model S</a>
-
         <a href="#">Model 3</a>
-
         <a href="#"> Model X</a>
-
         <a href="#">Model Y</a>
-
         <a href="#">Solar Roof</a>
-
         <a href="#">Solar Panles</a>
       </Menu>
       <RightMenu>
         <a>Shop</a>
         <a>Account</a>
-        <HamburgerMenu>Menu</HamburgerMenu>
+        <HamburgerMenu onClick={() => setOpenMenu(true)}>Menu</HamburgerMenu>
       </RightMenu>
-      <BurgerMenu>
+      <BurgerMenu show={openMenu}>
+        <CustomClosedWrapper>
+          <CustomClosed onClick={() => setOpenMenu(false)} />
+        </CustomClosedWrapper>
         <li>
           <a href="#">Model S</a>
         </li>
@@ -85,6 +86,8 @@ const Logo = styled.div`
 `;
 
 const HeaderWrapper = styled.div`
+  max-width: 1100px;
+  margin: 0 auto;
   min-height: 60px;
   position: fixed; //sticky header
   display: flex;
@@ -95,9 +98,10 @@ const HeaderWrapper = styled.div`
   left: 0;
   right: 0;
   z-index: 1;
+  overflow: hidden;
 
   a:hover {
-    background-color: green;
+    //background-color: green;
     border-raduis: 50px;
   }
 
@@ -111,7 +115,7 @@ const Menu = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  // background-color: grey;
+  //background-color: grey;
   flex: 1;
 
   @media (max-width: 1201px) {
@@ -141,7 +145,8 @@ const RightMenu = styled.div`
     margin-right: 10px;
     flex-shrink: 0;
     padding: 20px;
-  }
+    cursor: pointer;
+
 `;
 
 const HamburgerMenu = styled.div`
@@ -149,6 +154,8 @@ const HamburgerMenu = styled.div`
   transform: scale(1.2);
   text-transform: Uppercase;
   cursor: pointer;
+
+  }
 `;
 
 const BurgerMenu = styled.div`
@@ -164,8 +171,17 @@ const BurgerMenu = styled.div`
   z-index: 10;
   list-style: none;
   padding: 20px;
-
+  transform: ${(props) => (props.show ? "translateX(0)" : "translateX(100%)")};
   li {
     padding: 15px 0;
   }
+`;
+
+const CustomClosed = styled(CloseOutlinedIcon)`
+  cursor: pointer;
+`;
+
+const CustomClosedWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
 `;

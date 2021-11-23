@@ -10,6 +10,15 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+:root {
+  --tds-icon-trigger--animation: color 900ms cubic-bezier(0.75, 0, 0, 1),
+    border 900ms cubic-bezier(0.75, 0, 0, 1),
+    opacity 900ms cubic-bezier(0.75, 0, 0, 1),
+    transform 900ms cubic-bezier(0.75, 0, 0, 1),
+    box-shadow 250ms cubic-bezier(0.75, 0, 0, 1),
+    background-color 900ms cubic-bezier(0.75, 0, 0, 1);
+  --tds-icon-trigger--border_size: 2px;
+}
 
 body {
   width: 100%;
